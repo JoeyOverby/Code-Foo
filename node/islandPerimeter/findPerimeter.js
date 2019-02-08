@@ -31,18 +31,18 @@ class PerimeterFinder{
 					numNeighbors[numNeighborsHeightIndex][numNeighborsWidthIndex-1] = numNeighbors[numNeighborsHeightIndex][numNeighborsWidthIndex-1] + 1;
 				}
 
-				console.log(heightIndex + ","+ widthIndex + " = " + input[heightIndex][widthIndex] + " ");
+				//console.log(heightIndex + ","+ widthIndex + " = " + input[heightIndex][widthIndex] + " ");
 			}
-			console.log("");
+			//console.log("");
 		}
 
 		//Print the neighbors count array
-		for(var numNeighborsHeightIndex = 1; numNeighborsHeightIndex < height+1; numNeighborsHeightIndex++){
+		for(var numNeighborsHeightIndex = 0; numNeighborsHeightIndex < height+2; numNeighborsHeightIndex++){
 			var rowString = "";
-			for(var numNeighborsWidthIndex=1; numNeighborsWidthIndex < width+1; numNeighborsWidthIndex++){
+			for(var numNeighborsWidthIndex=0; numNeighborsWidthIndex < width+2; numNeighborsWidthIndex++){
 				rowString += numNeighbors[numNeighborsHeightIndex][numNeighborsWidthIndex] + " ";
 			}
-			console.log(rowString);
+			//console.log(rowString);
 		}
 
 		//Now run through the array and add up the number of neighbors and apply the math.
@@ -51,20 +51,28 @@ class PerimeterFinder{
 			for(var numNeighborsWidthIndex=1; numNeighborsWidthIndex < width+1; numNeighborsWidthIndex++){
 				switch(numNeighbors[numNeighborsHeightIndex][numNeighborsWidthIndex]){
 					case 1:
-					perimeter += 3
+					if(input[numNeighborsHeightIndex-1][numNeighborsWidthIndex-1] === 1){
+						perimeter += 3;
+					}
 					break;
 					case 2:
-					perimeter +=2
+
+					if(input[numNeighborsHeightIndex-1][numNeighborsWidthIndex-1] === 1){
+						perimeter += 2;
+					}
+					break;
 					case 3: 
-					perimeter +=1
+
+					if(input[numNeighborsHeightIndex-1][numNeighborsWidthIndex-1] === 1){
+						perimeter += 1;
+					}
 					default:
 					break;
 				}
 			}
-			console.log(rowString);
 		}
 
-		console.log("Perimeter is: ");
+		console.log("Perimeter is: " + perimeter);
 	}
     
 }

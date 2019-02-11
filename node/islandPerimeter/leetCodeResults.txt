@@ -1,0 +1,3 @@
+Details 
+Runtime: 268 ms, faster than 20.37% of JavaScript online submissions for Island Perimeter.
+Memory Usage: 27.7 MB, less than 11.20% of JavaScript online submissions for Island Perimeter.

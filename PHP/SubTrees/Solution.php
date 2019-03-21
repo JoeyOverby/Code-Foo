@@ -28,14 +28,13 @@ class Solution {
         
         if($s->val === $t->val) {
             //We found a match, so see if the subtree is fully equal
-            if($this->checkSubtree($s, $t) === true){
+            if($this->checkSubtree($s, $t) === true) {
                 return true;
             }
         }
         
-        
         if($s->hasLeft()) {
-            if( $this->isSubtree($s->left, $t) === true){
+            if($this->isSubtree($s->left, $t) === true) {
                 return true;
             }
         }
@@ -44,13 +43,10 @@ class Solution {
             if($this->isSubtree($s->right, $t) === true) {
                 return true;
             }
-    
+            
         }
-    
-            return false;
         
-        
-        
+        return false;
     }
     
     /**

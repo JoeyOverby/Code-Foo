@@ -7,7 +7,7 @@
 
 include_once("../Queue.php");
 include_once("../ChallengeHelpers.php");
-include_once ("../TreeNode.php");
+include_once("../TreeNode.php");
 
 
 /**
@@ -17,7 +17,6 @@ class Solution {
     
     
     /**
-     *
      * Checks if the tree, s, contains a subtree that exactly matches $t
      *
      * @param TreeNode $s
@@ -29,28 +28,27 @@ class Solution {
         
         if($s->val === $t->val) {
             //We found a match, so see if the subtree is fully equal
-            return $this->checkSubtree($s, $t);
-        } else {
-            
-            if($s->hasLeft()) {
-                $leftAnswer = $this->isSubtree($s->left, $t);
-            } else {
-                $leftAnswer = false;
-            }
-            
-            if($s->hasRight()) {
-                $rightAnswer = $this->isSubtree($s->right, $t);
-            } else {
-                $rightAnswer = false;
-            }
-            
-            if($leftAnswer || $rightAnswer) {
+            if($this->checkSubtree($s, $t) === true){
                 return true;
-            } else {
-                return false;
             }
-            
         }
+        
+        
+        if($s->hasLeft()) {
+            if( $this->isSubtree($s->left, $t) === true){
+                return true;
+            }
+        }
+        
+        if($s->hasRight()) {
+            if($this->isSubtree($s->right, $t) === true) {
+                return true;
+            }
+    
+        }
+    
+            return false;
+        
         
         
     }
@@ -66,7 +64,7 @@ class Solution {
     function checkSubtree(TreeNode $s = null, TreeNode $t = null) : bool {
         
         $sVal = ($s !== null) ? $s->getVal() : null;
-        $tVal = ($s !== null) ? $t->getVal() : null;
+        $tVal = ($t !== null) ? $t->getVal() : null;
         
         if($sVal !== $tVal) {
             return false;
@@ -76,12 +74,12 @@ class Solution {
             return true;
         }
         
-        $leftAnswer = $this->checkSubtree($s->getLeft(), $t->getLeft());
+        $leftAnswer  = $this->checkSubtree($s->getLeft(), $t->getLeft());
         $rightAnswer = $this->checkSubtree($s->getRight(), $t->getRight());
         
         if($leftAnswer && $rightAnswer) {
             return true;
-        }else {
+        } else {
             return false;
         }
         

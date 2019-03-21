@@ -1,0 +1,84 @@
+https://leetcode.com/submissions/detail/216611829/
+
+
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     public $val = null;
+ *     public $left = null;
+ *     public $right = null;
+ *     function __construct($value) { $this->val = $value; }
+ * }
+ */
+class Solution {
+
+     /**
+     * @param TreeNode $s
+     * @param TreeNode $t
+     *
+     * @return Boolean
+     */
+    function isSubtree($s, $t) {
+
+
+        if($s->val === $t->val) {
+            //We found a match, so see if the subtree is fully equal
+            if($this->checkSubtree($s, $t)){
+                return true;
+            }
+        }
+
+        if($s->left !== null) {
+            if($this->isSubtree($s->left, $t)){
+                return true;
+            }
+        }
+
+        if($s->right !== null){
+            if($this->isSubtree($s->right, $t)){
+                 return true;
+            }
+        }
+
+        // Didn't find anything, so return false
+        return false;
+
+
+
+
+
+    }
+
+    /**
+     * This function checks that starting at two equal nodes, are the rest of the subtree nodes equal?
+     *
+     * @param TreeNode $s
+     * @param TreeNode $t
+     *
+     * @return bool
+     */
+    function checkSubtree(TreeNode $s = null, TreeNode $t = null) : bool {
+
+        $sVal = ($s !== null) ? $s->val : null;
+        $tVal = ($t !== null) ? $t->val : null;
+
+        if($sVal !== $tVal) {
+            return false;
+        }
+
+        if($sVal === null && $tVal === null) {
+            return true;
+        }
+
+        $leftAnswer = $this->checkSubtree($s->left, $t->left);
+        $rightAnswer = $this->checkSubtree($s->right, $t->right);
+
+        if($leftAnswer === true && $rightAnswer === true) {
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+}
+

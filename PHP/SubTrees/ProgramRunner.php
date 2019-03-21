@@ -19,7 +19,7 @@ class ProgramRunner {
     
     public static function run() : void {
         //Load in the input data
-        $array = ChallengeHelpers::readFileIntoArray('Input.txt', ",", ["[",
+        $array = ChallengeHelpers::readFileIntoArray('Input3.txt', ",", ["[",
                                                                         "]"]);
         
         $sArray = $array[0];

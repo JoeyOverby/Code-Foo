@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "eslint": "^5.9.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "rrule": "^2.6.4"
   }
 }
